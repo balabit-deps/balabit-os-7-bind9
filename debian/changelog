@@ -1,3 +1,16 @@
+bind9 (1:9.11.3+dfsg-1ubuntu1.2) bionic-security; urgency=medium
+
+  * SECURITY UPDATE: denial of service crash when deny-answer-aliases
+    option is used
+    - debian/patches/CVE-2018-5740-1.patch: explicit DNAME query could
+      trigger a crash if deny-answer-aliases was set
+    - debian/patches/CVE-2018-5740-2.patch: add tests
+    - debian/patches/CVE-2018-5740-3.patch: caclulate nlabels and set
+      *chainingp correctly, add test
+    - CVE-2018-5740
+
+ -- Steve Beattie <sbeattie@ubuntu.com>  Thu, 09 Aug 2018 23:26:07 -0700
+
 bind9 (1:9.11.3+dfsg-1ubuntu1.1) bionic-security; urgency=medium
 
   * SECURITY UPDATE: improperly permits recursive query service
