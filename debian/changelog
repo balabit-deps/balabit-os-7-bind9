@@ -1,3 +1,11 @@
+bind9 (1:9.11.3+dfsg-1ubuntu1.3) bionic; urgency=medium
+
+  [ Karl Stenerud ]
+  * d/p/skip-rtld-deepbind-for-dyndb.diff: fix named-pkcs11 crashing on
+    startup. Thanks to Petr Menšík <pemensik@redhat.com> (LP: #1769440)
+
+ -- Andreas Hasenack <andreas@canonical.com>  Wed, 10 Oct 2018 14:33:34 -0300
+
 bind9 (1:9.11.3+dfsg-1ubuntu1.2) bionic-security; urgency=medium
 
   * SECURITY UPDATE: denial of service crash when deny-answer-aliases

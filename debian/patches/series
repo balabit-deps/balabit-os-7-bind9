@@ -15,3 +15,4 @@ CVE-2018-5738.patch
 CVE-2018-5740-1.patch
 CVE-2018-5740-2.patch
 CVE-2018-5740-3.patch
+skip-rtld-deepbind-for-dyndb.diff

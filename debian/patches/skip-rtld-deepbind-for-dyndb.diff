@@ -1,0 +1,29 @@
+Description: RTLD_DEEPBIND conflicts with pkcs11 libraries, skip it for dyndb
+ The crash manifested itself when deploying FreeIPA, as described in the
+ Ubuntu bug. This is a distro-only patch because of the way bind9 is built, so
+ no forwarding is needed.
+ .
+ Debian applied the same patch to its bind9 package at
+ https://salsa.debian.org/dns-team/bind9/commit/afc6b5fe2e359e4e7eadc256cd94481965418b4b
+Author: Petr Menšík <pemensik@redhat.com>
+Origin: https://pagure.io/fedora-bind/blob/3d5ea105bd877f0069452e450320f8877b01cb52/f/bind-9.11-rh1410433.patch
+Bug-Fedora: https://bugzilla.redhat.com/show_bug.cgi?id=1410433
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/freeipa/+bug/1769440
+Forwarded: not-needed
+Last-Update: 2018-10-11
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+diff --git a/lib/dns/dyndb.c b/lib/dns/dyndb.c
+index e21a84c7..ac18162c 100644
+--- a/lib/dns/dyndb.c
++++ b/lib/dns/dyndb.c
+@@ -133,9 +133,6 @@ load_library(isc_mem_t *mctx, const char *filename, const char *instname,
+ 		      instname, filename);
+ 
+ 	flags = RTLD_NOW|RTLD_LOCAL;
+-#ifdef RTLD_DEEPBIND
+-	flags |= RTLD_DEEPBIND;
+-#endif
+ 
+ 	handle = dlopen(filename, flags);
+ 	if (handle == NULL)
