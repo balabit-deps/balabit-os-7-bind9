@@ -1,3 +1,30 @@
+bind9 (1:9.11.3+dfsg-1ubuntu1.5) bionic-security; urgency=medium
+
+  * SECURITY UPDATE: memory leak via specially crafted packet
+    - debian/patches/CVE-2018-5744.patch: silently drop additional keytag
+      options in bin/named/client.c.
+    - CVE-2018-5744
+  * SECURITY UPDATE: assertion failure when a trust anchor rolls over to an
+    unsupported key algorithm when using managed-keys
+    - debian/patches/CVE-2018-5745.patch: properly handle situations when
+      the key tag cannot be computed in lib/dns/include/dst/dst.h,
+      lib/dns/zone.c.
+    - CVE-2018-5745
+  * SECURITY UPDATE: Controls for zone transfers may not be properly
+    applied to Dynamically Loadable Zones (DLZs) if the zones are writable
+    - debian/patches/CVE-2019-6465.patch: handle zone transfers marked in
+      the zone table as a DLZ zone bin/named/xfrout.c.
+    - CVE-2019-6465
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Wed, 20 Feb 2019 09:10:34 +0100
+
+bind9 (1:9.11.3+dfsg-1ubuntu1.4) bionic; urgency=medium
+
+  * Disable EDDSA to avoid picking up new symbols when rebuilding against
+    new OpenSSL. Cherrypick from Debian & Disco. LP: #1815474
+
+ -- Dimitri John Ledkov <xnox@ubuntu.com>  Tue, 05 Feb 2019 14:31:40 +0000
+
 bind9 (1:9.11.3+dfsg-1ubuntu1.3) bionic; urgency=medium
 
   [ Karl Stenerud ]
