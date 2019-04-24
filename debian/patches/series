@@ -19,3 +19,5 @@ skip-rtld-deepbind-for-dyndb.diff
 CVE-2018-5744.patch
 CVE-2018-5745.patch
 CVE-2019-6465.patch
+CVE-2018-5743.patch
+CVE-2018-5743-atomic-fix.patch
