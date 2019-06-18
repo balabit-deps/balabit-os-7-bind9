@@ -1,3 +1,12 @@
+bind9 (1:9.11.3+dfsg-1ubuntu1.8) bionic-security; urgency=medium
+
+  * SECURITY UPDATE: DoS via malformed packets
+    - debian/patches/CVE-2019-6471.patch: fix race condition in
+      lib/dns/dispatch.c.
+    - CVE-2019-6471
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Tue, 18 Jun 2019 18:55:08 -0400
+
 bind9 (1:9.11.3+dfsg-1ubuntu1.7) bionic-security; urgency=medium
 
   * SECURITY UPDATE: limiting simultaneous TCP clients is ineffective
