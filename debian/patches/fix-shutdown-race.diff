@@ -1,0 +1,41 @@
+From f2ca287330110993609fa0443d3bdb17629bd979 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20K=C4=99pie=C5=84?= <michal@isc.org>
+Date: Tue, 13 Nov 2018 13:50:47 +0100
+Subject: [PATCH 1/2] Fix a shutdown race in bin/dig/dighost.c
+
+If a tool using the routines defined in bin/dig/dighost.c is sent an
+interruption signal around the time a connection timeout is scheduled to
+fire, connect_timeout() may be executed after destroy_libs() detaches
+from the global task (setting 'global_task' to NULL), which results in a
+crash upon a UDP retry due to bringup_timer() attempting to create a
+timer with 'task' set to NULL.  Fix by preventing connect_timeout() from
+attempting a retry when shutdown is in progress.
+
+(cherry picked from commit 462175659674a10c0d39c7c328f1a5324ce2e38b)
+
+Origin: https://gitlab.isc.org/isc-projects/bind9/merge_requests/1040/diffs
+Bug: https://gitlab.isc.org/isc-projects/bind9/issues/599
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/bind9/+bug/1797926
+Last-Update: 2018-12-06
+
+---
+ bin/dig/dighost.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+diff --git a/bin/dig/dighost.c b/bin/dig/dighost.c
+index 39abb9d0fd..17e0328228 100644
+--- a/bin/dig/dighost.c
++++ b/bin/dig/dighost.c
+@@ -3240,6 +3240,11 @@ connect_timeout(isc_task_t *task, isc_event_t *event) {
+ 
+ 	INSIST(!free_now);
+ 
++	if (cancel_now) {
++		UNLOCK_LOOKUP;
++		return;
++	}
++
+ 	if ((query != NULL) && (query->lookup->current_query != NULL) &&
+ 	    ISC_LINK_LINKED(query->lookup->current_query, link) &&
+ 	    (ISC_LIST_NEXT(query->lookup->current_query, link) != NULL)) {
+-- 
+2.18.1
