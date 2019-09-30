@@ -1,3 +1,10 @@
+bind9 (1:9.11.3+dfsg-1ubuntu1.10) bionic; urgency=medium
+
+  * d/p/fix-socket-failures-during-name-resolution.patch: fix socket failures
+    due to uninitialized memory during name resolution (LP: #1804542)
+
+ -- Lucas Kanashiro <lucas.kanashiro@canonical.com>  Mon, 30 Sep 2019 15:39:12 -0300
+
 bind9 (1:9.11.3+dfsg-1ubuntu1.9) bionic; urgency=medium
 
   * d/p/fix-shutdown-race.diff: dig/host/nslookup could crash when interrupted
