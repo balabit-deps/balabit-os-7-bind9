@@ -24,3 +24,4 @@ CVE-2018-5743-atomic-fix.patch
 CVE-2019-6471.patch
 fix-shutdown-race.diff
 fix-socket-failures-during-name-resolution.patch
+CVE-2019-6477.patch

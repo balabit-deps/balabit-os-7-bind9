@@ -1,3 +1,13 @@
+bind9 (1:9.11.3+dfsg-1ubuntu1.11) bionic-security; urgency=medium
+
+  * SECURITY UPDATE: TCP Pipelining doesn't limit TCP clients on a single
+    connection
+    - debian/patches/CVE-2019-6477.patch: limit number of clients in
+      bin/named/client.c, bin/named/include/named/client.h.
+    - CVE-2019-6477
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Mon, 18 Nov 2019 10:01:47 -0500
+
 bind9 (1:9.11.3+dfsg-1ubuntu1.10) bionic; urgency=medium
 
   * d/p/fix-socket-failures-during-name-resolution.patch: fix socket failures
