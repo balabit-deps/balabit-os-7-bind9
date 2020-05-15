@@ -1,3 +1,19 @@
+bind9 (1:9.11.3+dfsg-1ubuntu1.12) bionic-security; urgency=medium
+
+  * SECURITY UPDATE: BIND does not sufficiently limit the number of fetches
+    performed when processing referrals
+    - debian/patches/CVE-2020-8616.patch: further limit the number of
+      queries that can be triggered from a request in lib/dns/adb.c,
+      lib/dns/include/dns/adb.h, lib/dns/resolver.c.
+    - CVE-2020-8616
+  * SECURITY UPDATE: A logic error in code which checks TSIG validity can
+    be used to trigger an assertion failure in tsig.c
+    - debian/patches/CVE-2020-8617.patch: don't allow replaying a TSIG
+      BADTIME response in lib/dns/tsig.c.
+    - CVE-2020-8617
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Fri, 15 May 2020 08:17:59 -0400
+
 bind9 (1:9.11.3+dfsg-1ubuntu1.11) bionic-security; urgency=medium
 
   * SECURITY UPDATE: TCP Pipelining doesn't limit TCP clients on a single

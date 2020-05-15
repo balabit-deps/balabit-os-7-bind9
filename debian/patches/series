@@ -25,3 +25,5 @@ CVE-2019-6471.patch
 fix-shutdown-race.diff
 fix-socket-failures-during-name-resolution.patch
 CVE-2019-6477.patch
+CVE-2020-8616.patch
+CVE-2020-8617.patch
