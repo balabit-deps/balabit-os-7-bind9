@@ -1,3 +1,24 @@
+bind9 (1:9.11.3+dfsg-1ubuntu1.13) bionic-security; urgency=medium
+
+  * SECURITY UPDATE: A truncated TSIG response can lead to an assertion
+    failure
+    - debian/patches/CVE-2020-8622.patch: move code in lib/dns/message.c.
+    - CVE-2020-8622
+  * SECURITY UPDATE: A flaw in native PKCS#11 code can lead to a remotely
+    triggerable assertion failure
+    - debian/patches/CVE-2020-8623.patch: add extra checks in
+      lib/dns/pkcs11dh_link.c, lib/dns/pkcs11dsa_link.c,
+      lib/dns/pkcs11rsa_link.c, lib/isc/include/pk11/internal.h,
+      lib/isc/pk11.c.
+    - CVE-2020-8623
+  * SECURITY UPDATE: update-policy rules of type subdomain were enforced
+    incorrectly
+    - debian/patches/CVE-2020-8624.patch: add extra check in
+      bin/named/zoneconf.c.
+    - CVE-2020-8624
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Tue, 18 Aug 2020 08:08:32 -0400
+
 bind9 (1:9.11.3+dfsg-1ubuntu1.12) bionic-security; urgency=medium
 
   * SECURITY UPDATE: BIND does not sufficiently limit the number of fetches
