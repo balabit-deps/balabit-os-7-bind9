@@ -1,3 +1,12 @@
+bind9 (1:9.11.3+dfsg-1ubuntu1.14) bionic-security; urgency=medium
+
+  * SECURITY UPDATE: off-by-one bug in ISC SPNEGO implementation
+    - debian/patches/CVE-2020-8625.patch: properly calculate length in
+      lib/dns/spnego.c.
+    - CVE-2020-8625
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Mon, 15 Feb 2021 08:08:25 -0500
+
 bind9 (1:9.11.3+dfsg-1ubuntu1.13) bionic-security; urgency=medium
 
   * SECURITY UPDATE: A truncated TSIG response can lead to an assertion
