@@ -91,6 +91,7 @@ override_dh_auto_configure:
 		--with-pkcs11=\$${prefix}/lib/softhsm/libsofthsm2.so \
 		--with-randomdev=/dev/urandom \
 		--with-eddsa=no \
+		--disable-isc-spnego \
 		$(EXTRA_FEATURES)
 	dh_auto_configure -B build-udeb -- \
 		--sysconfdir=/etc/bind \
